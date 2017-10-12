@@ -6,7 +6,7 @@ var ModalView = SOCIView.extend({
     'click .close' : 'hide'
   },
   initialize: function(model) {
-    status = model.status
+    status = model.status.text
   },
   hide: function() {
     this.$el.hide();

@@ -54,18 +54,36 @@
           <option value="schedule">Schedule</option>
           <option value="created_by_name">Created By</option>
         </select>
+        <div class="sort-arrows">
+          <span>&uarr;</span>
+          <span>&darr;</span>
+        </div>
       </div>
     </form>
+    <form class="search-form">
+      <div class="form-group">
+         <input type="text" class="form-control" placeholder="search message or created by name">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-outline-primary" type="submit">Enter</button>
+      </div>
+    </form>
+    <div class="paginate-arrows">
+      <button class="next-page">Next Page</button>
+      <button class="previous-page">Previous Page</button>
+    </div>
   </script>
 
   <script type='text/template' id='PostView' data-id="<%=post.id%>">
     <div class="post-details">
-      <p> Message: <%= post.message %></p>
-      <p> Scheduled For: <%= post.schedule %></p>
-      <p> Network Type: <%= post.network %></p>
-      <p class="<%=status%>"> Status: <%= status %></p>
+      <div class="post-message">
+        <p><strong> Message:</strong> <%= post.message %></p>
+      </div>
+      <p> <strong>Scheduled For:</strong> <%= post.schedule %></p>
+      <p><strong> Network Type:</strong> <%= post.network %></p>
+      <p class="<%=status.css%>"> <strong>Status:</strong> <%= status.text %></p>
     </div>
-    <button  class="post-delete btn btn-primary-outline">Delete Post</button>
+    <button  class="post-delete btn btn-outline-primary">Delete Post</button>
   </script>
   <script type='text/template' id='ModalView'>
 

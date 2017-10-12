@@ -9,22 +9,24 @@ var PostView = SOCIView.extend({
     'click .post-delete' : 'deletePost'
   },
   initialize: function() {
-    status = this.getStatus();
+    this.status = this.getStatus();
     this.render();
   },
   render: function(){
-    this.$el.html(this.template({post: this.model.attributes, status: status}));
+    this.$el.html(this.template({post: this.model.attributes, status: this.status}));
     return this;
   },
   getStatus: function() {
-    var attributes = this.model.attributes
+    let attributes = this.model.attributes;
+    let status = {};
     if ((attributes.customer_approved === "1") && (attributes.manager_approved === "1")) {
-      return "Approved";
+      status = { text: "Approved", css: "bg-success"};
     } else if ((attributes.customer_approved === "0") || (attributes.manager_approved === "0")) {
-      return "Pending";
+      status = {text: "Pending", css: "bg-warning"};
     } else if ((attributes.customer_approved === "-1") || (attributes.manager_approved === "-1")) {
-      return "Rejected";
+      status = {text: "Rejected", css: "bg-danger"};
     }
+    return status;
   },
   openDetails: function() {
     let status = this.getStatus();
@@ -41,5 +43,4 @@ var PostView = SOCIView.extend({
     this.model.collection.remove(this.model);
     this.render();
   }
-
 });

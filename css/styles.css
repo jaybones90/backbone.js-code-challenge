@@ -4,7 +4,7 @@
 .post-details {
   border: 1px solid black;
   margin-top: 1em;
-  height: 300px;
+  height: 200px;
   padding: 1em;
 }
 
@@ -17,11 +17,14 @@
 .header {
   padding: 1em 0 3em 0;
 }
-
-.section {
-  margin: 2em 0;
-  padding: 4em;
+.post-message p{
+  width: 85%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
 }
+
 
 .grid {
   background: #36D1DC;  /* fallback for old browsers */
@@ -30,9 +33,10 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
 }
 .post-delete {
   display: none;
+  margin-top: 1em;
 }
 
-#drop-down {
+.form-group{
   width: 30%;
 }
 
