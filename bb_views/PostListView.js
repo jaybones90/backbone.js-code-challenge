@@ -47,22 +47,26 @@ var PostListView = SOCIView.extend({
   },
   nextPage: function() {
     this.page++;
-    if (this.page > this.lastPage) {
-      this.page = this.lastPage;
-      $('.next-page').css('background-color', 'red');
-    } else {
-      this.collection.models = this.collection.paginate(this.page, this.perPage);
-      this.render();
-    }
+    if (this.page >= this.lastPage) {
+      $('.next-page').addClass('disabled');
+        if (this.page > this.lastPage) {
+          this.page = this.lastPage;
+        } else {
+          this.collection.models = this.collection.paginate(this.page, this.perPage);
+          this.render();
+        }
+      };
   },
   previousPage: function() {
     this.page--;
-    if (this.page < this.firstPage) {
-      this.page = 1;
-      $('.previous-page').css('background-color', 'red');
-    } else {
-      this.collection.models = this.collection.paginate(this.page, this.perPage);
-      this.render();
-    }
+    if (this.page <= this.firstPage ) {
+      $('.previous-page').addClass('disabled');
+      if (this.page < this.firstPage) {
+        this.page = 1;
+      } else {
+        this.collection.models = this.collection.paginate(this.page, this.perPage);
+        this.render();
+      }
+    };
   }
 });
