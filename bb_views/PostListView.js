@@ -5,9 +5,15 @@ var PostListView = SOCIView.extend({
 	 'change #drop-down' : 'sortCollection',
    'submit' : 'searchCollection',
    'click .sort-arrows' : 'reverseSortOrder',
-   'click .paginate-arrows' : 'paginateCollection'
-  },
+   'click .next-page' : 'nextPage',
+   'click .previous-page' : 'previousPage'
+ },
   initialize: function() {
+    this.page = 1;
+    this.firstPage = 1;
+    this.perPage = 5;
+    this.lastPage = Math.ceil(this.collection.length / 5);
+    this.collection.models = this.collection.paginate(this.page, this.perPage);
     this.listenTo(this.collection, 'sort remove', this.render);
     this.render();
   },
@@ -39,7 +45,24 @@ var PostListView = SOCIView.extend({
     this.sortOrder = this.sortOrder === 1 ? -1 : 1;
     this.collection.setSortDirection(this.sortOrder);
   },
-  paginateCollection: function() {
-    this.collection.pagination()
+  nextPage: function() {
+    this.page++;
+    if (this.page > this.lastPage) {
+      this.page = this.lastPage;
+      $('.next-page').css('background-color', 'red');
+    } else {
+      this.collection.models = this.collection.paginate(this.page, this.perPage);
+      this.render();
+    }
+  },
+  previousPage: function() {
+    this.page--;
+    if (this.page < this.firstPage) {
+      this.page = 1;
+      $('.previous-page').css('background-color', 'red');
+    } else {
+      this.collection.models = this.collection.paginate(this.page, this.perPage);
+      this.render();
+    }
   }
 });

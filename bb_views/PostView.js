@@ -30,7 +30,7 @@ var PostView = SOCIView.extend({
   },
   openDetails: function() {
     let status = this.getStatus();
-    $('#modal-placement').html(new ModalView({model: this.model, status: status}).render().el);
+    this.$el.find('#modal-placement').html(new ModalView({model: this.model, status: status}).render().el);
   },
   showDelete: function() {
     deleteButton = this.$el.find('button')

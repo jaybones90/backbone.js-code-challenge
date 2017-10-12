@@ -22,6 +22,7 @@
 
   <!-- Add your Backbone View templates here -->
   <script type='text/template' id='ListContainerView'>
+    <!-- General data about scheduled posts -->
     <div class="section general-data">
       <div class="header">
         <h3>General Data</h3>
@@ -36,16 +37,18 @@
         <tbody id="table-body"></tbody>
       </table>
     </div>
-    <div id="modal-placement"></div>
   </script>
+  <!-- General Data View Template -->
   <script type='text/template' id='GeneralDataView'>
     <td><%= total %></td>
     <td><%= approved %></td>
     <td><%= pending %></td>
     <td><%= rejected %></td>
   </script>
+  <!-- Post List Template -->
   <script type='text/template' id='PostListView'>
     <h3>Scheduled Posts</h3>
+    <!-- Drop down filter for posts -->
     <form>
       <div class="form-group">
         <label class="form-control-label" for="formGroupExampleInput">Filter By:</label>
@@ -54,12 +57,14 @@
           <option value="schedule">Schedule</option>
           <option value="created_by_name">Created By</option>
         </select>
+        <!-- Sort post order(asc/desc) -->
         <div class="sort-arrows">
           <span>&uarr;</span>
           <span>&darr;</span>
         </div>
       </div>
     </form>
+    <!-- Search input for post list-->
     <form class="search-form">
       <div class="form-group">
          <input type="text" class="form-control" placeholder="search message or created by name">
@@ -68,12 +73,11 @@
         <button class="btn btn-outline-primary" type="submit">Enter</button>
       </div>
     </form>
-    <div class="paginate-arrows">
-      <button class="next-page">Next Page</button>
-      <button class="previous-page">Previous Page</button>
-    </div>
+    <!-- Pagination Buttons -->
+    <button class="previous-page">Previous Page</button>
+    <button class="next-page">Next Page</button>
   </script>
-
+  <!--Post View template  -->
   <script type='text/template' id='PostView' data-id="<%=post.id%>">
     <div class="post-details">
       <div class="post-message">
@@ -84,10 +88,10 @@
       <p class="<%=status.css%>"> <strong>Status:</strong> <%= status.text %></p>
     </div>
     <button  class="post-delete btn btn-outline-primary">Delete Post</button>
+    <div id="modal-placement"></div>
   </script>
+  <!-- Post details dialog box -->
   <script type='text/template' id='ModalView'>
-
-  <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
         <ul>
@@ -101,12 +105,7 @@
           <li><%= status %></li>
         </ul>
       </div>
-
   </script>
-
-  <!-- -->
-
-
 
   <!-- Import your Backbone data/view classes here -->
   <script src="bb_models/ListItemModel.js" type="text/javascript"></script>
@@ -130,7 +129,7 @@
     <!-- Render your item list here -->
     <div class="container">
       <div class="takehome_body">
-
+        
     </div>
   </div>
 </body>
