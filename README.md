@@ -1,4 +1,4 @@
-# SOCI Take home technical (front end) #
+# Take home technical (front end) #
 
 This is intended to give us some idea of your abilities in the following areas:
 
